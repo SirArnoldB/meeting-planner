@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
-</head>
+{% block title %} Welcome {% endblock %}
 
-<body>
+{% block content %}
     <h1>Welcome to the Meeting Planner!</h1>
     <p>
         This is a demo application for the course <em>
@@ -19,13 +13,15 @@
     <h2>Meetings</h2>
     <ul>
         {% for meeting in meetings %}
-            <li>
-                <a href="{% url 'detail' meeting.id %}">
-                    {{ meeting.title }}
-                </a>
-            </li>
+        <li>
+            <a href="{% url 'detail' meeting.id %}">
+                {{ meeting.title }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
-</body>
 
-</html>
+    <p>
+        <a href="{% url 'rooms' %}">Rooms</a>
+    </p>
+{% endblock %}
